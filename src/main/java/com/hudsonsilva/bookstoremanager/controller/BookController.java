@@ -25,7 +25,7 @@ public class BookController {
        Book savedBook = bookRepository.save(book); // FAZ A CRIAÇÃO DE UM LIVRO
 
         return MessageResponseDTO.builder()
-                .message("Book created with ID" + savedBook.getId())
+                .message("Book created with ID " + savedBook.getId())
                 .build();
     }
 
