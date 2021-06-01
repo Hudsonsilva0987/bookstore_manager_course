@@ -9,23 +9,20 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController // Indica que a classe representa um controller
+@RestController
 @RequestMapping("/api/v1/books")
 public class BookController {
-
-    private BookRepository bookRepository;
+    BookRepository bookRepository;
 
     @Autowired
-    public BookController(BookRepository bookRepository) {
+    public BookController (BookRepository bookRepository){
         this.bookRepository = bookRepository;
     }
-
-    @PostMapping // Anotação de criação
-    public MessageResponseDTO create(@RequestBody Book book){
-       Book savedBook = bookRepository.save(book); // FAZ A CRIAÇÃO DE UM LIVRO
-
-        return MessageResponseDTO.builder()
-                .message("Book created with ID " + savedBook.getId())
+    @PostMapping
+    public MessageResponseDTO create(@RequestBody  Book book){
+        Book savedBook = bookRepository.save(book);
+        return MessageResponseDTO
+                .builder().message("Book Created with id : " + savedBook.getId())
                 .build();
     }
 
